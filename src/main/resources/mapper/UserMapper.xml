@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.squall1744.authenticationdemo.dao.UserMapper">
+
+    <select id="getUserByUsername"  resultType="com.squall1744.authenticationdemo.entity.User">
+		SELECT
+		* FROM user_info WHERE username = #{username}
+	</select>
+
+    <insert id="insertUser" parameterType="integer">
+
+    </insert>
+</mapper>
