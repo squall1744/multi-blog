@@ -11,6 +11,5 @@
 	</select>
 
     <insert id="insertUser" parameterType="integer">
-
     </insert>
 </mapper>
