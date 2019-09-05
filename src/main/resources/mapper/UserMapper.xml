@@ -11,5 +11,7 @@
 	</select>
 
     <insert id="insertUser" parameterType="integer">
+        insert into user_info (username, password, avatar, created_at, updated_at)
+        values (#{username}, #{password}, #{avatar}, now(), now())
     </insert>
 </mapper>
