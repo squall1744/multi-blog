@@ -23,6 +23,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void save(String username, String password) {
+        userMapper.insertUser(username, bCryptPasswordEncoder.encode(password), "");
     }
 
     public User gerUserByUsername(String username) {

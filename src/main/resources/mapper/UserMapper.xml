@@ -10,6 +10,8 @@
 		* FROM user_info WHERE username = #{username}
 	</select>
 
-    <insert id="insertUser" parameterType="integer">
+    <insert id="insertUser">
+        insert into user_info (username, password, avatar, created_at, updated_at)
+        values (#{username}, #{password}, #{avatar}, now(), now())
     </insert>
 </mapper>
