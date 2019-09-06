@@ -1,9 +1,12 @@
 package com.squall1744.authenticationdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.Instant;
 
 public class User {
     private String username;
+    @JsonIgnore
     private String password;
     private String avatar;
     private Instant createdAt;

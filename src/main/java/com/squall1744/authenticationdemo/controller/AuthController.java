@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,8 +30,14 @@ public class AuthController {
     }
 
     @GetMapping("/auth")
-    public User getUser() {
-       return userService.gerUserByUsername("Adam");
+    public AuthStatus getUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User loginUser = userService.gerUserByUsername(authentication == null ? null : authentication.getName());
+
+        if (loginUser == null) return AuthStatus.failStatus("用户未登录");
+
+        return AuthStatus.okStatus("用户已登录", loginUser);
+
     }
 
     @PostMapping("/auth/login")
