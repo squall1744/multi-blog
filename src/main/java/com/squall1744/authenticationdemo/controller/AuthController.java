@@ -37,7 +37,6 @@ public class AuthController {
         if (loginUser == null) return AuthStatus.failStatus("用户未登录");
 
         return AuthStatus.okStatus("用户已登录", loginUser);
-
     }
 
     @PostMapping("/auth/login")
